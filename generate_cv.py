@@ -162,9 +162,17 @@ def sb_title(text):
     pPr.append(pBdr)
     return p
 
+# ─── Photo ──────────────────────────────────────
+p = sidebar.add_paragraph()
+p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p.paragraph_format.space_before = Pt(14)
+p.paragraph_format.space_after  = Pt(4)
+run = p.add_run()
+run.add_picture('static/img/photo.jpg', width=Cm(2.8))
+
 # ─── Nom & titre ────────────────────────────────
 p = sb()
-p.paragraph_format.space_before = Pt(22)
+p.paragraph_format.space_before = Pt(2)
 p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
 p = sidebar.add_paragraph()
@@ -198,7 +206,7 @@ for label, value in [
     ('Tél.', '06 48 14 58 46'),
     ('Email', 'jessesteven26@gmail.com'),
     ('LinkedIn', 'jesse-richard'),
-    ('Ville', 'Besançon (25000)'),
+    ('Ville', 'Besançon (25) · Montcourt (70)'),
 ]:
     p = sidebar.add_paragraph()
     p.paragraph_format.space_before = Pt(2)
@@ -424,7 +432,7 @@ for titre, ecole, date, note in [
         'GRETA — Développeur en Intelligence Artificielle',
         'GRETA Besançon × Simplon.co · Lycée Jules Haag — Titre RNCP Niveau 6',
         '2025–2027',
-        'Certification Microsoft Azure AI-900 · 2ème année en alternance'
+        '✓ Certification Microsoft Azure AI-900 — Obtenue · 2ème année en alternance'
     ),
     (
         'Licence de Géologie (jusqu\'en L2)',
@@ -490,6 +498,12 @@ projects = [
     ('🚗 Prédiction prix voitures d\'occasion',
      'App full-stack + API REST : login, dashboard statistique (Power BI / TABLEAU), choix du modèle ML.',
      'FastAPI · pandas · Power BI · TABLEAU'),
+    ('📥 YouTube Downloader',
+     'Automatisation de téléchargement YouTube avec système de triggers et déploiement Docker.',
+     'Python · Docker · Automation · Triggers'),
+    ('🎬 Moteur de recherche Netflix',
+     'Interface complète : login, création de compte, historique, recherche et notation de films.',
+     'Python · SQL · Auth · Full-Stack'),
     ('🎮 BVN-Project — Jeu vidéo Python',
      'Reconstruction from scratch d\'un jeu vidéo Flash périmé, retranscrit entièrement en Python.',
      'Python · Pygame · Architecture logicielle'),
