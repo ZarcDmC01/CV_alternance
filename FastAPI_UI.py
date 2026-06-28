@@ -35,7 +35,7 @@ async def _notify(ip: str, ua: str, path: str) -> None:
 @app.middleware("http")
 async def track_visitors(request: Request, call_next):
     response = await call_next(request)
-    if request.method == "GET" and request.url.path not in ("/health", "/static"):
+    if request.method == "GET" and request.url.path not in ("/health",) and not request.url.path.startswith("/static/"):
         asyncio.create_task(_notify(
             request.client.host if request.client else "unknown",
             request.headers.get("user-agent", "unknown"),
