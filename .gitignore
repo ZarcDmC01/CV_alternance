@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Fichiers temporaires Office
+~$*
+
+# Fichiers générés
+CV_Jesse_Richard_Developpeur_IA.docx
+
+# PDFs source (trop lourds pour git)
+CV_alternance/
+DATA/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore
