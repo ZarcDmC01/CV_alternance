@@ -197,7 +197,7 @@ sb_title('Contact')
 for label, value in [
     ('Tél.', '06 48 14 58 46'),
     ('Email', 'jessesteven26@gmail.com'),
-    ('LinkedIn', 'briand-bakouzou'),
+    ('LinkedIn', 'jesse-richard'),
     ('Ville', 'Besançon (25000)'),
 ]:
     p = sidebar.add_paragraph()
