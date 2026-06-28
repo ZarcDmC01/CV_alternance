@@ -15,12 +15,12 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
 async def portfolio(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request, "index.html")
 
 
 @app.get("/cv", response_class=HTMLResponse)
 async def cv_print(request: Request):
-    return templates.TemplateResponse("cv-print.html", {"request": request})
+    return templates.TemplateResponse(request, "cv-print.html")
 
 
 @app.get("/health")
