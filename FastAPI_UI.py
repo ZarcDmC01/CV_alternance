@@ -1,4 +1,5 @@
 import asyncio
+import os
 from datetime import datetime, timezone
 
 import httpx
@@ -7,10 +8,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 
-DISCORD_WEBHOOK = (
-    "https://discord.com/api/webhooks/1520719529192194109/"
-    "k9uDbGeshVqo973mPS_hmS11swSrSE5-uSA33sHXJprmf1tWG60GC0VjlnxaNgNrqcvW"
-)
+DISCORD_WEBHOOK = os.getenv("DISCORD_WEBHOOK", "")
 
 app = FastAPI(
     title="Jesse Richard — Portfolio IA",
