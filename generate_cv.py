@@ -543,6 +543,44 @@ for eng in ['Bénévole associatif (JAL)', 'Accompagnateur centre de loisirs et 
     run.font.size = Pt(8)
     run.font.color.rgb = GREY
 
+# ─── CTA portfolio ──────────────────────────────
+p = main.add_paragraph()
+p.paragraph_format.left_indent  = Cm(0)
+p.paragraph_format.right_indent = Cm(0)
+p.paragraph_format.space_before = Pt(10)
+p.paragraph_format.space_after  = Pt(0)
+
+# fond sombre via shading sur un tableau 1x1
+cta_tbl = doc.add_table(rows=1, cols=1)
+
+# on enlève ce paragraphe flottant et on l'insère dans la cellule main
+# plus simple : paragraphe avec fond via XML
+p2 = main.add_paragraph()
+p2.paragraph_format.left_indent  = Cm(0.3)
+p2.paragraph_format.right_indent = Cm(0.3)
+p2.paragraph_format.space_before = Pt(8)
+p2.paragraph_format.space_after  = Pt(6)
+pPr2 = p2._p.get_or_add_pPr()
+shd = OxmlElement('w:shd')
+shd.set(qn('w:val'), 'clear')
+shd.set(qn('w:color'), 'auto')
+shd.set(qn('w:fill'), '0D1B2A')
+pPr2.append(shd)
+p2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+r1 = p2.add_run('👉  Découvrez mon portfolio interactif, mes projets en action et contactez-moi directement : ')
+r1.bold = True
+r1.font.size = Pt(8.5)
+r1.font.color.rgb = WHITE
+
+r2 = p2.add_run('cv-jesse-richard.onrender.com')
+r2.bold = True
+r2.font.size = Pt(9)
+r2.font.color.rgb = TEAL
+r2.underline = True
+
+cta_tbl._element.getparent().remove(cta_tbl._element)
+
 # ══════════════════════════════════════════════════════════
 # SAUVEGARDE
 # ══════════════════════════════════════════════════════════
