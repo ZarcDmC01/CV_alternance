@@ -7,8 +7,9 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 
-N8N_WEBHOOK = (
-    "https://mon-n8n-mfof.onrender.com/webhook/6f3437d8-b95f-4894-80d3-074d47ec375c"
+DISCORD_WEBHOOK = (
+    "https://discord.com/api/webhooks/1520719529192194109/"
+    "k9uDbGeshVqo973mPS_hmS11swSrSE5-uSA33sHXJprmf1tWG60GC0VjlnxaNgNrqcvW"
 )
 
 app = FastAPI(
@@ -23,13 +24,10 @@ templates = Jinja2Templates(directory="templates")
 
 async def _notify(ip: str, ua: str, path: str) -> None:
     try:
+        ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+        msg = f"👀 **Nouveau visiteur**\n📍 `{path}`\n🌐 `{ip}`\n🕐 `{ts}`\n🖥️ {ua}"
         async with httpx.AsyncClient(timeout=5.0) as client:
-            await client.post(N8N_WEBHOOK, json={
-                "ip": ip,
-                "user_agent": ua,
-                "path": path,
-                "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
-            })
+            await client.post(DISCORD_WEBHOOK, json={"content": msg})
     except Exception:
         pass
 
