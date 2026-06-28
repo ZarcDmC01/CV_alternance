@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cv-jesse-richard
+    runtime: docker
+    repo: https://github.com/ZarcDmC01/CV_alternance
+    branch: main
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: true
