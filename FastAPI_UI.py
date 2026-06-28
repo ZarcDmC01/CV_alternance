@@ -24,5 +24,6 @@ async def cv_print(request: Request):
 
 
 @app.get("/health")
+@app.head("/health")
 async def health():
     return {"status": "ok"}
