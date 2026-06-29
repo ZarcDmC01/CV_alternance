@@ -287,23 +287,6 @@ for eng in ['Bénévole associatif (JAL)', 'Accompagnateur centre de loisirs et 
     run.font.size = Pt(8.5)
     run.font.color.rgb = RGBColor(0x94, 0xA3, 0xB8)
 
-# ─── QR code ────────────────────────────────────
-p_qr = sidebar.add_paragraph()
-p_qr.alignment = WD_ALIGN_PARAGRAPH.CENTER
-p_qr.paragraph_format.space_before = Pt(10)
-p_qr.paragraph_format.space_after  = Pt(2)
-run_qr = p_qr.add_run()
-run_qr.add_picture('static/img/qr.png', width=Cm(3.5))
-
-p_qr2 = sidebar.add_paragraph()
-p_qr2.alignment = WD_ALIGN_PARAGRAPH.CENTER
-p_qr2.paragraph_format.space_before = Pt(0)
-p_qr2.paragraph_format.space_after  = Pt(4)
-r_qr2 = p_qr2.add_run('Portfolio interactif')
-r_qr2.font.size = Pt(7)
-r_qr2.italic = True
-r_qr2.font.color.rgb = RGBColor(0x64, 0x74, 0x8B)
-
 # ─── Citation ───────────────────────────────────
 sb_title('Citation')
 p = sidebar.add_paragraph()
@@ -318,6 +301,23 @@ p2 = sidebar.add_paragraph()
 p2.paragraph_format.left_indent = Cm(0.5)
 r2 = p2.add_run('— Denis Diderot')
 r2.font.size = Pt(6.5)
+
+# ─── QR code ────────────────────────────────────
+p_qr = sidebar.add_paragraph()
+p_qr.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p_qr.paragraph_format.space_before = Pt(10)
+p_qr.paragraph_format.space_after  = Pt(2)
+run_qr = p_qr.add_run()
+run_qr.add_picture('static/img/qr.png', width=Cm(3.5))
+
+p_qr2 = sidebar.add_paragraph()
+p_qr2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p_qr2.paragraph_format.space_before = Pt(0)
+p_qr2.paragraph_format.space_after  = Pt(2)
+r_qr2 = p_qr2.add_run('📱 Scanner → Portfolio interactif')
+r_qr2.font.size = Pt(7.5)
+r_qr2.italic = True
+r_qr2.font.color.rgb = TEAL
 r2.font.color.rgb = TEAL
 
 # ══════════════════════════════════════════════════════════
