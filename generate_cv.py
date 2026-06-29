@@ -519,9 +519,9 @@ projects = [
     ('📥 YouTube Downloader',
      'Automatisation de téléchargement YouTube avec système de triggers et déploiement Docker.',
      'Python · Docker · Automation · Triggers'),
-    ('🖥️ SAO HUD — Interface desktop',
-     'Interface HUD desktop inspirée de Sword Art Online : widgets système (CPU/GPU/RAM), explorateur de fichiers, launcher, tray icon. Reproduction Python de SAO Utils 2.',
-     'PyQt6 · psutil · pynvml · Windows API · pycaw'),
+    ('🖥️ SAO HUD — Interface desktop IA',
+     'Interface HUD desktop inspirée de SAO avec widgets CPU/GPU/RAM, explorateur, launcher. Auto-programmation par agents IA (Claude, Groq) : chaque jour un agent génère et propose de nouveaux widgets automatiquement.',
+     'PyQt6 · psutil · Agent IA · Claude · Groq · Windows API'),
 ]
 
 for name, desc, tech in projects:
