@@ -192,14 +192,6 @@ run = p.add_run('Développeur IA')
 run.font.size = Pt(8)
 run.font.color.rgb = TEAL
 
-p = sidebar.add_paragraph()
-p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-p.paragraph_format.space_before = Pt(1)
-p.paragraph_format.space_after  = Pt(4)
-run = p.add_run('Disponible · Alternance Août 2026')
-run.font.size = Pt(7)
-run.font.color.rgb = RGBColor(0x94, 0xA3, 0xB8)
-
 # ─── Contact ────────────────────────────────────
 sb_title('Contact')
 for label, value in [
@@ -266,6 +258,17 @@ for sk in ['Autodidacte', 'Curieux', 'Sang-froid', 'Adaptable', 'Encadrement', '
     p.paragraph_format.space_before = Pt(1)
     p.paragraph_format.space_after  = Pt(0)
     run = p.add_run('▸  ' + sk)
+    run.font.size = Pt(7.5)
+    run.font.color.rgb = RGBColor(0x94, 0xA3, 0xB8)
+
+# ─── Engagements ────────────────────────────────
+sb_title('Engagements')
+for eng in ['Bénévole associatif (JAL)', 'Accompagnateur centre de loisirs et scolaire', 'Scrutateur électoral']:
+    p = sidebar.add_paragraph()
+    p.paragraph_format.left_indent  = Cm(0.5)
+    p.paragraph_format.space_before = Pt(1)
+    p.paragraph_format.space_after  = Pt(0)
+    run = p.add_run('▸  ' + eng)
     run.font.size = Pt(7.5)
     run.font.color.rgb = RGBColor(0x94, 0xA3, 0xB8)
 
@@ -432,7 +435,7 @@ for titre, ecole, date, note in [
         'GRETA — Développeur en Intelligence Artificielle',
         'GRETA Besançon × Simplon.co · Lycée Jules Haag — Titre RNCP Niveau 6',
         '2025–2027',
-        '✓ Certification Microsoft Azure AI-900 — Obtenue · 2ème année en alternance'
+        '✓ Certification Microsoft Azure AI-900'
     ),
     (
         'Licence de Géologie (jusqu\'en L2)',
@@ -530,18 +533,6 @@ for name, desc, tech in projects:
     p3.paragraph_format.space_after  = Pt(0)
     r3 = p3.add_run(tech)
     r3.italic = True; r3.font.size = Pt(7); r3.font.color.rgb = TEAL_DARK
-
-# ─── Engagements ────────────────────────────────
-mp_title('Engagements & Bénévolat')
-
-p = main.add_paragraph()
-p.paragraph_format.left_indent  = Cm(0.6)
-p.paragraph_format.space_before = Pt(3)
-p.paragraph_format.space_after  = Pt(10)
-for eng in ['Bénévole associatif (JAL)', 'Accompagnateur centre de loisirs et scolaire', 'Scrutateur électoral']:
-    run = p.add_run('▸ ' + eng + '   ')
-    run.font.size = Pt(8)
-    run.font.color.rgb = GREY
 
 # ─── CTA portfolio ──────────────────────────────
 p = main.add_paragraph()
