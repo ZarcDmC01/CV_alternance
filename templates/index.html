@@ -343,7 +343,7 @@
           <span class="tag">Next.js</span><span class="tag">TypeScript</span>
           <span class="tag">Tailwind</span><span class="tag">Recharts</span><span class="tag">CoinGecko API</span>
         </div>
-        <a href="https://simulateur-crypto-three.vercel.app" class="project-demo" target="_blank">Voir la démo →</a>
+        <button class="project-demo" onclick="openDemo('https://simulateur-crypto-three.vercel.app', 'S\'investir — Simulateur Crypto')">Voir la démo →</button>
       </div>
 
     </div>
@@ -487,6 +487,17 @@
 <footer>
   <p>Jesse Richard — Développeur IA · Besançon (25) · <span>jessesteven26@gmail.com</span></p>
 </footer>
+
+<!-- DEMO MODAL -->
+<div class="demo-modal" id="demoModal" onclick="if(event.target===this)closeDemo()">
+  <div class="demo-modal-inner">
+    <div class="demo-modal-bar">
+      <span class="demo-modal-title" id="demoModalTitle"></span>
+      <button class="demo-modal-close" onclick="closeDemo()">✕</button>
+    </div>
+    <iframe id="demoFrame" src="" allowfullscreen></iframe>
+  </div>
+</div>
 
 <script src="/static/js/main.js"></script>
 </body>

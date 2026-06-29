@@ -1,3 +1,17 @@
+// Demo modal
+function openDemo(url, title) {
+  document.getElementById('demoFrame').src = url;
+  document.getElementById('demoModalTitle').textContent = title;
+  document.getElementById('demoModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDemo() {
+  document.getElementById('demoModal').classList.remove('open');
+  document.getElementById('demoFrame').src = '';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDemo(); });
+
 // Fade-in on scroll
 const observer = new IntersectionObserver(
   entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
