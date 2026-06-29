@@ -1,3 +1,5 @@
+html { scroll-behavior: smooth; }
+
 :root {
   --navy: #0d1b2a;
   --navy-light: #1a2e45;

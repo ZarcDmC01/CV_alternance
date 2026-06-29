@@ -97,12 +97,19 @@ doc = Document()
 
 # ── marges page ──────────────────────────────────────────
 section = doc.sections[0]
-section.page_width  = Cm(21)
-section.page_height = Cm(29.7)
 section.left_margin   = Cm(0)
 section.right_margin  = Cm(0)
 section.top_margin    = Cm(0)
 section.bottom_margin = Cm(0)
+
+# Force A4 via XML (11906 x 16838 twips)
+sectPr = section._sectPr
+pgSz = sectPr.find(qn('w:pgSz'))
+if pgSz is None:
+    pgSz = OxmlElement('w:pgSz')
+    sectPr.append(pgSz)
+pgSz.set(qn('w:w'), '11906')
+pgSz.set(qn('w:h'), '16838')
 
 # ══════════════════════════════════════════════════════════
 # TABLEAU PRINCIPAL  (2 colonnes : sidebar | contenu)
@@ -110,6 +117,14 @@ section.bottom_margin = Cm(0)
 tbl = doc.add_table(rows=1, cols=2)
 tbl.alignment = WD_TABLE_ALIGNMENT.LEFT
 tbl.allow_autofit = False
+
+# Force la ligne à remplir toute la hauteur A4
+tr = tbl.rows[0]._tr
+trPr = tr.get_or_add_trPr()
+trHeight = OxmlElement('w:trHeight')
+trHeight.set(qn('w:val'), '16838')
+trHeight.set(qn('w:hRule'), 'exact')
+trPr.append(trHeight)
 
 col_widths = [Cm(6.2), Cm(14.8)]
 for i, cell in enumerate(tbl.rows[0].cells):
@@ -134,7 +149,7 @@ for p in sidebar.paragraphs:
 sidebar._element.get_or_add_tcPr()
 sidebar.vertical_alignment = WD_ALIGN_VERTICAL.TOP
 
-def sb(text='', bold=False, italic=False, size=8.5, color=None, align=WD_ALIGN_PARAGRAPH.LEFT, space_before=1, space_after=1):
+def sb(text='', bold=False, italic=False, size=9.5, color=None, align=WD_ALIGN_PARAGRAPH.LEFT, space_before=1, space_after=1):
     p = sidebar.add_paragraph()
     p.alignment = align
     p.paragraph_format.space_before = Pt(space_before)
@@ -150,7 +165,7 @@ def sb(text='', bold=False, italic=False, size=8.5, color=None, align=WD_ALIGN_P
     return p
 
 def sb_title(text):
-    p = sb(text.upper(), bold=True, size=7, color=TEAL, space_before=8, space_after=2)
+    p = sb(text.upper(), bold=True, size=8, color=TEAL, space_before=8, space_after=2)
     pPr = p._p.get_or_add_pPr()
     pBdr = OxmlElement('w:pBdr')
     bottom = OxmlElement('w:bottom')
@@ -206,10 +221,10 @@ for label, value in [
     p.paragraph_format.left_indent  = Cm(0.4)
     r1 = p.add_run(label + ' ')
     r1.bold = True
-    r1.font.size = Pt(7.5)
+    r1.font.size = Pt(8.5)
     r1.font.color.rgb = TEAL
     r2 = p.add_run(value)
-    r2.font.size = Pt(7.5)
+    r2.font.size = Pt(8.5)
     r2.font.color.rgb = RGBColor(0x94, 0xA3, 0xB8)
 
 # ─── Compétences techniques ──────────────────────
@@ -229,10 +244,10 @@ for cat, skills in [
     p.paragraph_format.space_after  = Pt(0)
     r1 = p.add_run(cat + ' : ')
     r1.bold = True
-    r1.font.size = Pt(7.5)
+    r1.font.size = Pt(8.5)
     r1.font.color.rgb = RGBColor(0xE2, 0xE8, 0xF0)
     r2 = p.add_run(skills)
-    r2.font.size = Pt(7.5)
+    r2.font.size = Pt(8.5)
     r2.font.color.rgb = RGBColor(0x94, 0xA3, 0xB8)
 
 # ─── Langues ────────────────────────────────────
@@ -244,10 +259,10 @@ for lang, level in [('Français', 'Natif'), ('Anglais', 'Technique (95% oral)')]
     p.paragraph_format.space_after  = Pt(0)
     r1 = p.add_run(lang + ' — ')
     r1.bold = True
-    r1.font.size = Pt(7.5)
+    r1.font.size = Pt(8.5)
     r1.font.color.rgb = RGBColor(0xE2, 0xE8, 0xF0)
     r2 = p.add_run(level)
-    r2.font.size = Pt(7.5)
+    r2.font.size = Pt(8.5)
     r2.font.color.rgb = TEAL
 
 # ─── Soft Skills ────────────────────────────────
@@ -258,7 +273,7 @@ for sk in ['Autodidacte', 'Curieux', 'Sang-froid', 'Adaptable', 'Encadrement', '
     p.paragraph_format.space_before = Pt(1)
     p.paragraph_format.space_after  = Pt(0)
     run = p.add_run('▸  ' + sk)
-    run.font.size = Pt(7.5)
+    run.font.size = Pt(8.5)
     run.font.color.rgb = RGBColor(0x94, 0xA3, 0xB8)
 
 # ─── Engagements ────────────────────────────────
@@ -269,7 +284,7 @@ for eng in ['Bénévole associatif (JAL)', 'Accompagnateur centre de loisirs et 
     p.paragraph_format.space_before = Pt(1)
     p.paragraph_format.space_after  = Pt(0)
     run = p.add_run('▸  ' + eng)
-    run.font.size = Pt(7.5)
+    run.font.size = Pt(8.5)
     run.font.color.rgb = RGBColor(0x94, 0xA3, 0xB8)
 
 # ─── Citation ───────────────────────────────────
@@ -280,7 +295,7 @@ p.paragraph_format.right_indent = Cm(0.3)
 p.paragraph_format.space_before = Pt(2)
 run = p.add_run('« Il faut être enthousiaste de son métier pour y exceller. »')
 run.italic = True
-run.font.size = Pt(7)
+run.font.size = Pt(8)
 run.font.color.rgb = RGBColor(0x64, 0x74, 0x8B)
 p2 = sidebar.add_paragraph()
 p2.paragraph_format.left_indent = Cm(0.5)
@@ -297,7 +312,7 @@ for p in main.paragraphs:
     p._element.getparent().remove(p._element)
 main.vertical_alignment = WD_ALIGN_VERTICAL.TOP
 
-def mp(text='', bold=False, italic=False, size=9, color=None,
+def mp(text='', bold=False, italic=False, size=10, color=None,
        space_before=2, space_after=2, align=WD_ALIGN_PARAGRAPH.LEFT):
     p = main.add_paragraph()
     p.alignment = align
@@ -314,7 +329,7 @@ def mp(text='', bold=False, italic=False, size=9, color=None,
     return p
 
 def mp_title(text):
-    p = mp(text.upper(), bold=True, size=7.5, color=NAVY, space_before=10, space_after=2)
+    p = mp(text.upper(), bold=True, size=8.5, color=NAVY, space_before=10, space_after=2)
     pPr = p._p.get_or_add_pPr()
     pBdr = OxmlElement('w:pBdr')
     bottom = OxmlElement('w:bottom')
@@ -553,10 +568,14 @@ shd.set(qn('w:fill'), '0D1B2A')
 pPr2.append(shd)
 p2.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-r1 = p2.add_run('👉  Découvrez mon portfolio interactif, mes projets en action et contactez-moi directement : ')
+r1 = p2.add_run('👉  Version interactive du CV et portfolio :')
 r1.bold = True
 r1.font.size = Pt(8.5)
 r1.font.color.rgb = WHITE
+
+from docx.oxml import OxmlElement as _OE
+br = _OE('w:br')
+r1._r.append(br)
 
 r2 = p2.add_run('cv-jesse-richard.onrender.com')
 r2.bold = True
