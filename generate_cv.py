@@ -504,12 +504,6 @@ projects = [
     ('📥 YouTube Downloader',
      'Automatisation de téléchargement YouTube avec système de triggers et déploiement Docker.',
      'Python · Docker · Automation · Triggers'),
-    ('🎬 Moteur de recherche Netflix',
-     'Interface complète : login, création de compte, historique, recherche et notation de films.',
-     'Python · SQL · Auth · Full-Stack'),
-    ('🎮 BVN-Project — Jeu vidéo Python',
-     'Reconstruction from scratch d\'un jeu vidéo Flash périmé, retranscrit entièrement en Python.',
-     'Python · Pygame · Architecture logicielle'),
 ]
 
 for name, desc, tech in projects:
