@@ -183,7 +183,7 @@ p.alignment = WD_ALIGN_PARAGRAPH.CENTER
 p.paragraph_format.space_before = Pt(14)
 p.paragraph_format.space_after  = Pt(4)
 run = p.add_run()
-run.add_picture('static/img/photo.jpg', width=Cm(2.8))
+run.add_picture('static/img/photo.jpg', width=Cm(4.5))
 
 # ─── Nom & titre ────────────────────────────────
 p = sb()
@@ -252,7 +252,7 @@ for cat, skills in [
 
 # ─── Langues ────────────────────────────────────
 sb_title('Langues')
-for lang, level in [('Français', 'Natif'), ('Anglais', 'Technique (95% oral)')]:
+for lang, level in [('Français', 'Natif'), ('Anglais', 'Technique (70%)')]:
     p = sidebar.add_paragraph()
     p.paragraph_format.left_indent  = Cm(0.4)
     p.paragraph_format.space_before = Pt(2)
@@ -356,7 +356,7 @@ p.paragraph_format.left_indent  = Cm(0.6)
 p.paragraph_format.space_before = Pt(0)
 p.paragraph_format.space_after  = Pt(1)
 run = p.add_run('Développeur en Intelligence Artificielle  ·  Data Scientist')
-run.font.size = Pt(10)
+run.font.size = Pt(11)
 run.font.color.rgb = TEAL
 
 p = main.add_paragraph()
@@ -365,7 +365,7 @@ p.paragraph_format.space_before = Pt(1)
 p.paragraph_format.space_after  = Pt(4)
 run = p.add_run('Disponible pour alternance · Août 2026')
 run.bold = True
-run.font.size = Pt(8)
+run.font.size = Pt(9)
 run.font.color.rgb = TEAL_DARK
 
 # ─── Profil ─────────────────────────────────────
@@ -375,7 +375,7 @@ mp(
     'code/nocode. À l\'aise sur toute la chaîne IA : collecte de données, entraînement de modèles, '
     'intégration API et déploiement. J\'apprends de nouvelles techniques chaque jour et j\'explore '
     'constamment de nouvelles architectures.',
-    size=8.5, space_before=3, space_after=2
+    size=10, space_before=3, space_after=2
 )
 
 # ─── Expérience ─────────────────────────────────
@@ -388,24 +388,24 @@ p.paragraph_format.right_indent = Cm(0.5)
 p.paragraph_format.space_before = Pt(4)
 p.paragraph_format.space_after  = Pt(0)
 r1 = p.add_run('Développeur en Intelligence Artificielle')
-r1.bold = True; r1.font.size = Pt(9); r1.font.color.rgb = NAVY
+r1.bold = True; r1.font.size = Pt(10); r1.font.color.rgb = NAVY
 r2 = p.add_run('   ·   ')
-r2.font.size = Pt(8); r2.font.color.rgb = RGBColor(0xCB, 0xD5, 0xE1)
+r2.font.size = Pt(9); r2.font.color.rgb = RGBColor(0xCB, 0xD5, 0xE1)
 r3 = p.add_run('Stage · 2025–2026')
-r3.font.size = Pt(8); r3.font.color.rgb = TEAL_DARK
+r3.font.size = Pt(9); r3.font.color.rgb = TEAL_DARK
 
 p2 = main.add_paragraph()
 p2.paragraph_format.left_indent  = Cm(0.6)
 p2.paragraph_format.space_before = Pt(0)
 p2.paragraph_format.space_after  = Pt(2)
 r = p2.add_run('Sophysa')
-r.bold = True; r.font.size = Pt(8.5); r.font.color.rgb = TEAL_DARK
+r.bold = True; r.font.size = Pt(9.5); r.font.color.rgb = TEAL_DARK
 
 mp(
     'Développement de 11 algorithmes de clustering avec 4 types de métriques de distance '
     'pour l\'analyse de données. Conception d\'un frontend permettant l\'interaction et la '
     'visualisation des résultats de clustering. Déploiement containerisé avec Docker.',
-    size=8, space_before=1, space_after=2
+    size=9, space_before=1, space_after=2
 )
 p = main.add_paragraph()
 p.paragraph_format.left_indent  = Cm(0.6)
@@ -434,12 +434,12 @@ p2.paragraph_format.left_indent  = Cm(0.6)
 p2.paragraph_format.space_before = Pt(0)
 p2.paragraph_format.space_after  = Pt(2)
 r = p2.add_run('CCD — Service National Universel · Vesoul, Lycée Belin')
-r.bold = True; r.font.size = Pt(8.5); r.font.color.rgb = TEAL_DARK
+r.bold = True; r.font.size = Pt(9.5); r.font.color.rgb = TEAL_DARK
 
 mp(
     'Encadrement de jeunes volontaires au sein d\'un centre de cohésion. '
     'Gestion de section, organisation d\'activités, coordination pédagogique.',
-    size=8, space_before=1, space_after=2
+    size=9, space_before=1, space_after=2
 )
 
 # ─── Formation ──────────────────────────────────
@@ -477,9 +477,9 @@ for titre, ecole, date, note in [
     p.paragraph_format.space_before = Pt(4)
     p.paragraph_format.space_after  = Pt(0)
     r1 = p.add_run(titre)
-    r1.bold = True; r1.font.size = Pt(8.5); r1.font.color.rgb = NAVY
+    r1.bold = True; r1.font.size = Pt(9.5); r1.font.color.rgb = NAVY
     r2 = p.add_run(f'   {date}')
-    r2.font.size = Pt(8); r2.font.color.rgb = TEAL_DARK
+    r2.font.size = Pt(9); r2.font.color.rgb = TEAL_DARK
 
     if ecole:
         p2 = main.add_paragraph()
@@ -487,7 +487,7 @@ for titre, ecole, date, note in [
         p2.paragraph_format.space_before = Pt(0)
         p2.paragraph_format.space_after  = Pt(0)
         r = p2.add_run(ecole)
-        r.font.size = Pt(7.5); r.font.color.rgb = GREY
+        r.font.size = Pt(8.5); r.font.color.rgb = GREY
 
     if note:
         p3 = main.add_paragraph()
@@ -519,6 +519,9 @@ projects = [
     ('📥 YouTube Downloader',
      'Automatisation de téléchargement YouTube avec système de triggers et déploiement Docker.',
      'Python · Docker · Automation · Triggers'),
+    ('🖥️ SAO HUD — Interface desktop',
+     'Interface HUD desktop inspirée de Sword Art Online : widgets système (CPU/GPU/RAM), explorateur de fichiers, launcher, tray icon. Reproduction Python de SAO Utils 2.',
+     'PyQt6 · psutil · pynvml · Windows API · pycaw'),
 ]
 
 for name, desc, tech in projects:
@@ -527,21 +530,21 @@ for name, desc, tech in projects:
     p.paragraph_format.space_before = Pt(4)
     p.paragraph_format.space_after  = Pt(0)
     r1 = p.add_run(name)
-    r1.bold = True; r1.font.size = Pt(8.5); r1.font.color.rgb = NAVY
+    r1.bold = True; r1.font.size = Pt(9.5); r1.font.color.rgb = NAVY
 
     p2 = main.add_paragraph()
     p2.paragraph_format.left_indent  = Cm(0.6)
     p2.paragraph_format.space_before = Pt(0)
     p2.paragraph_format.space_after  = Pt(0)
     r2 = p2.add_run(desc)
-    r2.font.size = Pt(7.5); r2.font.color.rgb = GREY
+    r2.font.size = Pt(8.5); r2.font.color.rgb = GREY
 
     p3 = main.add_paragraph()
     p3.paragraph_format.left_indent  = Cm(0.6)
     p3.paragraph_format.space_before = Pt(1)
     p3.paragraph_format.space_after  = Pt(0)
     r3 = p3.add_run(tech)
-    r3.italic = True; r3.font.size = Pt(7); r3.font.color.rgb = TEAL_DARK
+    r3.italic = True; r3.font.size = Pt(8); r3.font.color.rgb = TEAL_DARK
 
 # ─── CTA portfolio ──────────────────────────────
 p = main.add_paragraph()
@@ -584,6 +587,22 @@ r2.font.color.rgb = TEAL
 r2.underline = True
 
 cta_tbl._element.getparent().remove(cta_tbl._element)
+
+# ─── QR code ────────────────────────────────────
+p_qr = main.add_paragraph()
+p_qr.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p_qr.paragraph_format.space_before = Pt(8)
+p_qr.paragraph_format.space_after  = Pt(2)
+run_qr = p_qr.add_run()
+run_qr.add_picture('static/img/qr.png', width=Cm(2.8))
+
+p_qr2 = main.add_paragraph()
+p_qr2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+p_qr2.paragraph_format.space_before = Pt(0)
+r_qr2 = p_qr2.add_run('Scanner pour accéder au portfolio')
+r_qr2.font.size = Pt(7)
+r_qr2.italic = True
+r_qr2.font.color.rgb = RGBColor(0x94, 0xA3, 0xB8)
 
 # ══════════════════════════════════════════════════════════
 # SAUVEGARDE
